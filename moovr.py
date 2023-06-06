@@ -1,6 +1,7 @@
 import tkinter
 import mouse
 import time
+import pyautogui
 
 
 class Moovr(tkinter.Tk):
@@ -19,8 +20,8 @@ class Moovr(tkinter.Tk):
         self.resizable(width=False, height=False)
         self.launch = True
         self.counter = 120
-        self.to_left = True
-        self.to_right = False
+        # self.to_left = True
+        # self.to_right = False
 
         # Widgets :
         self.frame_title = tkinter.LabelFrame(self)
@@ -29,7 +30,7 @@ class Moovr(tkinter.Tk):
         self.label_name = tkinter.Label(
             self.frame_title, text="Jean-Nemo Aka YT", font=("Arial", 6))
         self.frame_text = tkinter.LabelFrame(self)
-        self.warning = tkinter.Label(self.frame_text, text=f"Mouvement dans :")
+        self.warning = tkinter.Label(self.frame_text, text=f"Décharge dans :")
         self.count = tkinter.Label(
             self.frame_text, text=f"{str(self.counter)} secondes")
         self.button_exiter = tkinter.Button(
@@ -56,13 +57,15 @@ class Moovr(tkinter.Tk):
             self.counter -= 1
             self.count.config(text=f"{str(self.counter)}")
             print(self.counter)
-            if self.counter == 1 and self.to_left == True:
-                mouse.move(-100, 0, absolute=False, duration=0.5)
+            if self.counter == 1:  # and self.to_left == True
+                # mouse.move(-100, 0, absolute=False, duration=0.5)
+                pyautogui.press("f12")
                 self.counter = 120
                 self.to_left = False
                 self.to_right = True
-            elif self.counter == 1 and self.to_right == True:
-                mouse.move(100, 0, absolute=False, duration=0.5)
+            elif self.counter == 1:  # and self.to_right == True
+                # mouse.move(100, 0, absolute=False, duration=0.5)
+                pyautogui.press("f12")
                 self.counter = 120
                 self.to_left = True
                 self.to_right = False
