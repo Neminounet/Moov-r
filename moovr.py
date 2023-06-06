@@ -1,5 +1,4 @@
 import tkinter
-import mouse
 import time
 import pyautogui
 
@@ -19,9 +18,7 @@ class Moovr(tkinter.Tk):
             f"{self.width}x{self.height}+{self.pos_width}+{self.pos_height}")
         self.resizable(width=False, height=False)
         self.launch = True
-        self.counter = 120
-        # self.to_left = True
-        # self.to_right = False
+        self.counter = 90
 
         # Widgets :
         self.frame_title = tkinter.LabelFrame(self)
@@ -57,18 +54,9 @@ class Moovr(tkinter.Tk):
             self.counter -= 1
             self.count.config(text=f"{str(self.counter)}")
             print(self.counter)
-            if self.counter == 1:  # and self.to_left == True
-                # mouse.move(-100, 0, absolute=False, duration=0.5)
+            if self.counter == 1:
                 pyautogui.press("f12")
-                self.counter = 120
-                self.to_left = False
-                self.to_right = True
-            elif self.counter == 1:  # and self.to_right == True
-                # mouse.move(100, 0, absolute=False, duration=0.5)
-                pyautogui.press("f12")
-                self.counter = 120
-                self.to_left = True
-                self.to_right = False
+                self.counter = 90
         else:
             self.destroy()
 
